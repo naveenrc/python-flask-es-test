@@ -13,6 +13,7 @@ import {
 } from '../../selectors/searchSelectors';
 
 const SEARCH_PATH = '/search';
+const PageLimits = [50, 30, 10, 5];
 
 class SearchControlsComponent extends Component {
   renderViewAs() {
@@ -60,6 +61,12 @@ class SearchControlsComponent extends Component {
     );
   }
 
+  changeLimit(key) {
+xxxx
+    console.log(limitHef);
+    return (<Link to={limitHef}/>);
+  }
+
   renderNonViewAs() {
     if (this.props.isMultiTable || this.props.mode === 'graph') return null;
     return (
@@ -70,13 +77,21 @@ class SearchControlsComponent extends Component {
           <DropdownButton className='btn-secondary' id='bg-nested-dropdown' title='Relevance'>
             <MenuItem eventKey='1'>Dropdown link</MenuItem>
             <MenuItem eventKey='2'>Dropdown link</MenuItem>
+
           </DropdownButton>
         </div>
         <div className={style.control}>
           <label className={style.searchLabel}>Page Size</label>
-          <DropdownButton className='btn-secondary' id='bg-nested-dropdown' title='50'>
-            <MenuItem eventKey='1'>Dropdown link</MenuItem>
-            <MenuItem eventKey='2'>Dropdown link</MenuItem>
+          <DropdownButton className='btn-secondary' id='bg-nested-dropdown' title='Select' >
+          {
+            PageLimits.map((limit, indexL) => {
+              const limitVal = getQueryParamWithValueChanged('limit', PageLimits[indexL], this.props.queryParams);
+              const limitHef = { pathname: SEARCH_PATH, query: limitVal };
+              (
+              <MenuItem eventKey={indexL} key={indexL.toString()} onSelect={(eventKey) => this.changeLimit(eventKey)}>{limit}</MenuItem>
+              )
+            })
+          }          
           </DropdownButton>
         </div>
         <div>

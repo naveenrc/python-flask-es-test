@@ -144,6 +144,7 @@ function mapStateToProps(state) {
   let _mode = _queryParams.mode;
   let _isTable = (_mode === 'table');
   let _currentPage = parseInt(_queryParams.page) || 1;
+  let _pageSize = parseInt(_queryParams.limit) || selectPageSize(state);
   let _activeCategory = selectActiveCategory(state);
   let _isMultiTable = (_isTable && _activeCategory === 'none');
   return {
@@ -155,7 +156,7 @@ function mapStateToProps(state) {
     isReady: selectIsReady(state),
     isTable: _isTable,
     mode: _mode,
-    pageSize: selectPageSize(state),
+    pageSize: _pageSize,
     queryParams: _queryParams,
     results: selectResults(state)
   };

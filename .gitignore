@@ -13,3 +13,5 @@ deploy_variables.sh
 *.pickle
 \prototype
 package-lock.json
+.vscode
+env

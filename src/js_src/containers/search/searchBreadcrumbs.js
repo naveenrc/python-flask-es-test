@@ -7,7 +7,7 @@ import { getQueryParamWithValueChanged, makeFieldDisplayName } from '../../lib/s
 
 import { selectIsPending, selectQueryParams, selectTotal } from '../../selectors/searchSelectors.js';
 
-const IGNORED_PARAMS = ['page', 'mode'];
+const IGNORED_PARAMS = ['page', 'mode', 'limit'];
 const SORT_PRIORITY = ['category', 'q'];
 
 class SearchBreadcrumbsComponent extends Component {

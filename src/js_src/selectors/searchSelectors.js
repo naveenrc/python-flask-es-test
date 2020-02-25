@@ -99,8 +99,8 @@ export const selectTotal = createSelector(
 );
 
 export const selectPageSize = createSelector(
-  [selectSearchDomain],
-  (search) => search.get('pageSize')
+  [selectSearchDomain, selectQueryParams],
+  (search, queryParams) => queryParams['limit'] || search.get('pageSize')
 );
 
 export const selectTotalPages = createSelector(

@@ -1,6 +1,6 @@
 import _ from 'underscore';
 
-const SINGLE_VAL_FIELDS = ['mode', 'page'];
+const SINGLE_VAL_FIELDS = ['mode', 'page', 'limit'];
 const CLEARING_FIELDS = ['category'];
 
 export function makeFieldDisplayName(unformattedName) {
