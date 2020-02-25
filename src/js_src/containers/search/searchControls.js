@@ -61,13 +61,9 @@ class SearchControlsComponent extends Component {
     );
   }
 
-  changeLimit(key) {
-xxxx
-    console.log(limitHef);
-    return (<Link to={limitHef}/>);
-  }
-
   renderNonViewAs() {
+    let limitVal = getQueryParamWithValueChanged('limit', 5, this.props.queryParams);
+    let limitHef = { pathname: SEARCH_PATH, query: limitVal };
     if (this.props.isMultiTable || this.props.mode === 'graph') return null;
     return (
       <div className={style.controlContainer}>
@@ -82,17 +78,10 @@ xxxx
         </div>
         <div className={style.control}>
           <label className={style.searchLabel}>Page Size</label>
-          <DropdownButton className='btn-secondary' id='bg-nested-dropdown' title='Select' >
-          {
-            PageLimits.map((limit, indexL) => {
-              const limitVal = getQueryParamWithValueChanged('limit', PageLimits[indexL], this.props.queryParams);
-              const limitHef = { pathname: SEARCH_PATH, query: limitVal };
-              (
-              <MenuItem eventKey={indexL} key={indexL.toString()} onSelect={(eventKey) => this.changeLimit(eventKey)}>{limit}</MenuItem>
-              )
-            })
-          }          
-          </DropdownButton>
+          <DropdownButton className='btn-secondary' id='bg-nested-dropdown' title='Select'>
+            <Link to={limitHef}>50</Link><br />
+            <Link to={limitHef}>5</Link>
+          </DropdownButton> 
         </div>
         <div>
           <label className={style.searchLabel}>&nbsp;</label>
